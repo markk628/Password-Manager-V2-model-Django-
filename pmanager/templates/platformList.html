@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Platforms {% if platforms %}<small class="text-muted">({{platforms|length}} Platform{{platforms|length|pluralize:'s'}})</small>{% endif %}</h3>
+    <hr>
+    {% if platforms %}
+        <div class="card-columns">
+            {% for platform in platforms %}
+                {% include 'partials/card.html' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class='alert alert-primary' role="alert">No accounts to display</div>
+    {% endif %}
+{% endblock %}

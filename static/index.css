@@ -1,0 +1,19 @@
+.btn-group button {
+    background-color: white;
+    border: 1px solid skyblue;
+    color: black;
+    padding: 50px 100px;
+    cursor: pointer;
+    display: block;
+}
+
+.btn-group button:hover {
+    background-color: rgb(255, 247, 0);
+}
+
+.brand {
+    color: white;
+    position: absolute;
+    left: 51%;
+    margin-left: -100px !important;
+}

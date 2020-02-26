@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col m-4">
+            <h1>{{platform.platform}}</h1>
+        </div>
+        <br>
+        <h3>{{platform.username}}</h3>
+        <h3>{{platform.password}}</h3>
+        <a href="{% url 'platform-list-page' %}">Back to List</a>
+    </div>
+{% endblock %}
