@@ -2,5 +2,5 @@ from django.urls import path
 from accounts.views import SignUpView
 
 urlpatterns = [
-    path('signup/', SignUpView.as_view(), name='wiki-signup-page')
+    path('signup/', SignUpView.as_view(), name='pm-signup-page')
 ]
