@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.utils import timezone
 from django.contrib.auth.models import User
+import string
+import random
 
 # Create your models here.
 class Platform(models.Model):
@@ -24,3 +26,5 @@ class Platform(models.Model):
             self.slug = slugify(self.platform, allow_unicode=True)
 
         return super(Platform, self).save(*args, **kwargs)
+    
+

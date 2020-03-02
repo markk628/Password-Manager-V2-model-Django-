@@ -18,3 +18,7 @@ class PlatformDetailView(DetailView):
     def get(self, request, slug):
         platform = self.get_queryset().get(slug=slug)
         return render(request, 'platform.html', {'platform': platform})
+
+
+
+
