@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pmanager',
     'accounts',
-    'password'
+    'password',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

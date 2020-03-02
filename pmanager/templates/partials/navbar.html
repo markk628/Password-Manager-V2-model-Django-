@@ -5,6 +5,7 @@
         <form class="form-inline ml-auto">
             {% if user.is_authenticated %}
             <div class="text-white">Hello, <strong>{{ user }}</strong></div>
+            <a href="{% url 'platform-generate-page' %} " class="btn btn-danger ml-2">Generate Password</a>
             <a href="{% url 'logout' %} " class="btn btn-danger ml-2">Log Out</a> 
             {% else %}
             <a href="{% url 'login' %}" class="btn btn-secondary ml-2">Log In</a>
