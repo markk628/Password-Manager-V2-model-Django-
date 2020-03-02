@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h3>Platforms {% if platforms %}<small class="text-muted">({{platforms|length}} Platform{{platforms|length|pluralize:'s'}})</small>{% endif %}</h3>
+    <head>
+        <title>Accounts</title>
+    </head>
+    {% if user.is_authenticated %}
+    <h3>Platforms</h3>
     <hr>
     {% if platforms %}
         <div class="card-columns">
@@ -11,5 +15,8 @@
         </div>
     {% else %}
         <div class='alert alert-primary' role="alert">No accounts to display</div>
+    {% endif %}
+    {% else %}
+    <h1>Please log in to view your accounts</h1>
     {% endif %}
 {% endblock %}

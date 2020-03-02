@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="row">
-        <div class="col m-4">
-            <h1>{{platform.platform}}</h1>
+    <head>
+        <title>{{platform.platform}}</title>
+    </head>
+    <div class="container">
+        <div class="row">
+            <div class="col m-4">
+                <h1>{{platform.platform}}</h1>
+                <h3>Username: {{platform.username}}</h3>
+                <h3>Password: {{platform.password}}</h3>
+                <a href="{% url 'platform-list-page' %}">Back to List</a>
+            </div>
         </div>
-        <br>
-        <h3>{{platform.username}}</h3>
-        <h3>{{platform.password}}</h3>
-        <a href="{% url 'platform-list-page' %}">Back to List</a>
     </div>
 {% endblock %}

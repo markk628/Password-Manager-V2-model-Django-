@@ -10,15 +10,11 @@ class PlatformListView(ListView):
 
     def get(self, request):
         platforms = self.get_queryset().all()
-        return render(request, 'platformList.html', {
-            'platforms': platforms
-        })
+        return render(request, 'platformList.html', {'platforms': platforms})
 
 class PlatformDetailView(DetailView):
     model = Platform
 
     def get(self, request, slug):
-        platform = self.get_queryset().get(slug_iexact=slug)
-        return render(request, 'platform.html', {
-            'platform': platform
-        })
+        platform = self.get_queryset().get(slug=slug)
+        return render(request, 'platform.html', {'platform': platform})

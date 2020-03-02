@@ -17,7 +17,7 @@ class Platform(models.Model):
 
     def get_url(self):
         path_components = {'slug': self.slug}
-        return reverse('pm-platform-page', kwargs=path_components)
+        return reverse('platform-detail-page', kwargs=path_components)
 
     def save(self, *args, **kwargs):
         if not self.pk:
