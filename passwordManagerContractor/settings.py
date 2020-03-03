@@ -25,7 +25,7 @@ SECRET_KEY = 'i)4@apsedw#qtjdnr7b(@*q(k&a@0i^a#u91$=n6%@pz(c)=5c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'passwordgendjango.herokuapp.com']
 
 
 # Application definition
@@ -122,6 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)
 
 # pmanager app settings
 PMANAGER_USERNAME_MAX_LENGTH = 30

@@ -1,3 +1,46 @@
 from django.test import TestCase
+from .models import Platform
 
 # Create your tests here.
+class PlatformTestCase(TestCase):
+    def test_true_is_true(self):
+        """ Tests if True is equal to True. Should always pass. """
+        self.assertEqual(True, True)
+
+    def test_platform_slugify_on_save(self):
+        platform = Platform(platform='Netflix', username='test', password='test')
+        platform.save()
+
+        self.assertEqual(platform.slug, 'netflix')
+
+class PlatformListViewTests(TestCase):
+    def test_multiple_platforms(self):
+        # dummy data
+        Platform.objects.create(platform='Netflix', username='test', password='test')
+        Platform.objects.create(platform='Hulu', username='test', password='test')
+
+        # when platform list page requested, get a response back.
+        response = self.client.get('/')
+
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, 200)
+
+        # Check if number of platforms passed to the template
+        # matches the number of platforms we have in the database.
+        responses = response.context['platforms']
+        self.assertEqual(len(responses), 2)
+
+        self.assertQuerysetEqual(
+            responses,
+            ['<Platform: Netflix>', '<Platform: Hulu>'],
+            ordered=False
+        )
+
+class PlatformDetailViewTests(TestCase):
+    def test_detail_of_platform(self):
+        platform = Platform.objects.create(platform='HBO', username='test', password='test')
+
+        slug = platform.slug
+        response = self.client.get(f'/{slug}/')
+
+        self.assertEqual(response.status_code, 200)
