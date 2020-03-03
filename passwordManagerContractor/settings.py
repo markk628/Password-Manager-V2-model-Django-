@@ -25,7 +25,7 @@ SECRET_KEY = 'i)4@apsedw#qtjdnr7b(@*q(k&a@0i^a#u91$=n6%@pz(c)=5c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'passwordgendjango.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'passwordManagerDjango.herokuapp.com']
 
 
 # Application definition
@@ -130,5 +130,5 @@ PMANAGER_USERNAME_MAX_LENGTH = 30
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-# STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)
+STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)
 
