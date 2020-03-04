@@ -7,6 +7,17 @@ from pmanager.models import Platform
 from .forms import PlatformForm
 
 # Create your views here.
+class PlatformDetailView(DetailView):
+    model = Platform
+
+    def get(self, request, pk):
+        pass
+        platform = self.get_queryset().get(pk=pk)
+        return render(request, 'platform.html', {
+          'platform': platform
+        })
+
+
 class PlatformListView(ListView):
     model = Platform
 
@@ -14,12 +25,6 @@ class PlatformListView(ListView):
         platforms = self.get_queryset().all()
         return render(request, 'platformList.html', {'platforms': platforms})
 
-class PlatformDetailView(DetailView):
-    model = Platform
-
-    def get(self, request, slug):
-        platform = self.get_queryset().get(slug=slug)
-        return render(request, 'platform.html', {'platform': platform})
 
 class CreateNewPlatform(CreateView):
     model = Platform
@@ -34,7 +39,6 @@ class CreateNewPlatform(CreateView):
         form = PlatformForm(request.POST)
         if form.is_valid():
             platform = form.save(commit=False)
-            platform.user = request.user
             platform.save()
             return HttpResponseRedirect(reverse('platform-detail-page', args=[platform.id]))
 
@@ -43,8 +47,8 @@ class CreateNewPlatform(CreateView):
         return render(request, 'create_new_platform.html', content)
 
 
-def deletePlatform(request, slug):
-    apple = get_object_or_404(Platform, slug=slug)
+def deletePlatform(request, pk):
+    apple = get_object_or_404(Platform, pk=pk)
     apple.delete()
     return HttpResponseRedirect(reverse('platform-list-page'))
 

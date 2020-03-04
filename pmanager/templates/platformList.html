@@ -7,6 +7,7 @@
     {% if user.is_authenticated %}
     <h3>Platforms</h3>
     <hr>
+    <a href="{% url 'platform-create-page' %}">Add Account</a>
     {% if platforms %}
         <div class="card-columns">
             {% for platform in platforms %}

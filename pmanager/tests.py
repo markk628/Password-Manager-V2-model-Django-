@@ -7,11 +7,14 @@ class PlatformTestCase(TestCase):
         """ Tests if True is equal to True. Should always pass. """
         self.assertEqual(True, True)
 
-    def test_platform_slugify_on_save(self):
+    def test_platform_primary_key(self):
         platform = Platform(platform='Netflix', username='test', password='test')
         platform.save()
 
-        self.assertEqual(platform.slug, 'netflix')
+        platforms = platform.context['platforms']
+        numOfPlatforms = len(platforms) + 1
+
+        self.assertEqual(platform.pk, numOfPlatforms)
 
 class PlatformListViewTests(TestCase):
     def test_multiple_platforms(self):
@@ -40,7 +43,7 @@ class PlatformDetailViewTests(TestCase):
     def test_detail_of_platform(self):
         platform = Platform.objects.create(platform='HBO', username='test', password='test')
 
-        slug = platform.slug
-        response = self.client.get(f'/{slug}/')
+        pk = platform.pk
+        response = self.client.get(f'/{pk}/')
 
         self.assertEqual(response.status_code, 200)

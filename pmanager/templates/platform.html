@@ -13,5 +13,9 @@
                 <a href="{% url 'platform-list-page' %}">Back to List</a>
             </div>
         </div>
+        <form action="{% url 'platform-delete' platform.id %}" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-primary" type="submit" value="Delete">
+        </form>
     </div>
 {% endblock %}
