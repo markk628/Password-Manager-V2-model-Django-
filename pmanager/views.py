@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from django.views.generic import DetailView, ListView, CreateView, DeleteView
+from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy, reverse
 from django.http import Http404
 
@@ -49,6 +49,29 @@ class CreateNewPlatform(CreateView):
 
         content = {'form': PlatformForm()}
         return render(request, 'create_new_platform.html', content)
+
+class UpdatePlatform(UpdateView):
+    model = Platform
+
+    def get(self, request):
+
+        content = {'form': PlatformForm()}
+        return render(request, 'platform_update.html', content)
+
+
+    def post(self, request, pk):
+        form = PlatformForm(request.POST)
+        if form.is_valid():
+            platform = form.save(commit=False)
+            oldPlatform = get_object_or_404(Platform, pk=pk)
+            platform.save()
+            oldPlatform.delete()
+            return HttpResponseRedirect(reverse('platform-detail-page', args=[platform.id]))
+            
+
+
+        content = {'form': PlatformForm()}
+        return render(request, 'platform_update.html', content)
 
 
 def deletePlatform(request, pk):
