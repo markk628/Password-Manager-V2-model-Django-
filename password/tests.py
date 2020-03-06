@@ -9,9 +9,10 @@ class PasswordTestCase(TestCase):
 
 class PasswordViewTest(TestCase):
     def test_password(self):
-        # password1 = generate_password()
-        # password1.save()
+        password1 = generate_password()
 
+        self.assertEqual(password1, password1)
+    
         response = self.client.get(f'password/generate/')
 
         self.assertEqual(response.status_code, 404)

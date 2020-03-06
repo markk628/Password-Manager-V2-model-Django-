@@ -7,7 +7,9 @@ from pmanager.models import Platform
 from .forms import PlatformForm
 
 # Create your views here.
+
 class PlatformDetailView(DetailView):
+    # route for showing user the platform, username, and password
     model = Platform
 
     def get(self, request, pk):
@@ -19,6 +21,7 @@ class PlatformDetailView(DetailView):
 
 
 class PlatformListView(ListView):
+    # route for showing the list of platforms
     model = Platform
 
     def get(self, request):
@@ -27,6 +30,7 @@ class PlatformListView(ListView):
 
 
 class CreateNewPlatform(CreateView):
+    # route for adding platforms
     model = Platform
 
     def get(self, request):
@@ -48,6 +52,7 @@ class CreateNewPlatform(CreateView):
 
 
 def deletePlatform(request, pk):
+    # route for deleting a platform
     apple = get_object_or_404(Platform, pk=pk)
     apple.delete()
     return HttpResponseRedirect(reverse('platform-list-page'))

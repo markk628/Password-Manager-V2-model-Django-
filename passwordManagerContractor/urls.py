@@ -17,14 +17,19 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # admin route
     path('admin/', admin.site.urls),
 
+    # platform route
     path('', include('pmanager.urls')),
     
+    # account routes
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
 
+    # RESTful api route
     path('api/', include('api.urls')),
 
+    # password generator route
     path('password/', include('password.urls')),
 ]
